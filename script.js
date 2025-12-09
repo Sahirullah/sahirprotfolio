@@ -25,19 +25,24 @@ const defaultConfig = {
     let currentTheme = 'dark';
 
     function toggleTheme() {
+      console.log('Toggle theme clicked, current:', currentTheme);
       const body = document.body;
       const themeIcon = document.getElementById('theme-icon');
       
       if (currentTheme === 'dark') {
         body.classList.remove('dark-mode');
         body.classList.add('light-mode');
-        themeIcon.textContent = '☀️';
+        if (themeIcon) themeIcon.textContent = '☀️';
         currentTheme = 'light';
+        localStorage.setItem('theme', 'light');
+        console.log('Switched to light mode');
       } else {
         body.classList.remove('light-mode');
         body.classList.add('dark-mode');
-        themeIcon.textContent = '🌙';
+        if (themeIcon) themeIcon.textContent = '🌙';
         currentTheme = 'dark';
+        localStorage.setItem('theme', 'dark');
+        console.log('Switched to dark mode');
       }
     }
 
@@ -166,39 +171,92 @@ const defaultConfig = {
       });
     });
 
+    // Initialize EmailJS
+    (function() {
+      emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+    })();
+
     // Contact form submission
-    const contactForm = document.querySelector('.contact-form');
-    const submitBtn = contactForm.querySelector('.submit-btn');
+    const contactFormElement = document.getElementById('contact-form');
     
-    submitBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      
-      const name = contactForm.querySelector('input[type="text"]').value;
-      const email = contactForm.querySelector('input[type="email"]').value;
-      const subject = contactForm.querySelectorAll('input[type="text"]')[1].value;
-      const message = contactForm.querySelector('textarea').value;
-      
-      if (!name || !email || !subject || !message) {
-        alert('Please fill in all fields before submitting.');
-        return;
-      }
-      
-      // Show success message
-      submitBtn.innerHTML = '<span class="submit-btn-icon">✅</span> Message Sent!';
-      submitBtn.style.backgroundColor = '#10b981';
-      
-      // Reset form
-      setTimeout(() => {
-        contactForm.querySelectorAll('input').forEach(input => input.value = '');
-        contactForm.querySelector('textarea').value = '';
-        submitBtn.innerHTML = '<span class="submit-btn-icon">🚀</span> Send Message';
-        submitBtn.style.backgroundColor = '';
-      }, 2000);
-    });
+    if (contactFormElement) {
+      contactFormElement.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const submitBtn = document.getElementById('contact-submit');
+        const name = document.getElementById('contact-name').value;
+        const email = document.getElementById('contact-email').value;
+        const subject = document.getElementById('contact-subject').value;
+        const message = document.getElementById('contact-message').value;
+        
+        // Validate fields
+        if (!name || !email || !subject || !message) {
+          alert('Please fill in all fields before submitting.');
+          return;
+        }
+        
+        // Show loading state
+        submitBtn.innerHTML = '<span class="submit-btn-icon">⏳</span> Sending...';
+        submitBtn.disabled = true;
+        
+        // Send email using EmailJS
+        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+          from_name: name,
+          from_email: email,
+          subject: subject,
+          message: message,
+          to_email: "sahirullah313@gmail.com"
+        })
+        .then(function(response) {
+          // Success
+          console.log('SUCCESS!', response.status, response.text);
+          submitBtn.innerHTML = '<span class="submit-btn-icon">✅</span> Message Sent!';
+          submitBtn.style.backgroundColor = '#10b981';
+          contactFormElement.reset();
+          
+          // Reset button after 3 seconds
+          setTimeout(() => {
+            submitBtn.innerHTML = '<span class="submit-btn-icon">🚀</span> Send Message';
+            submitBtn.style.backgroundColor = '';
+            submitBtn.disabled = false;
+          }, 3000);
+        }, function(error) {
+          // Error - fallback to mailto
+          console.log('EmailJS failed, using mailto...', error);
+          
+          const mailtoLink = `mailto:sahirullah313@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+            `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+          )}`;
+          
+          window.open(mailtoLink, '_blank');
+          
+          submitBtn.innerHTML = '<span class="submit-btn-icon">📧</span> Opening Email...';
+          submitBtn.style.backgroundColor = '#3b82f6';
+          
+          setTimeout(() => {
+            submitBtn.innerHTML = '<span class="submit-btn-icon">🚀</span> Send Message';
+            submitBtn.style.backgroundColor = '';
+            submitBtn.disabled = false;
+            contactFormElement.reset();
+          }, 3000);
+        });
+      });
+    }
 
     // Event listeners
-    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
-    document.getElementById('mobile-toggle').addEventListener('click', toggleMobileMenu);
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const mobileToggleBtn = document.getElementById('mobile-toggle');
+    
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', toggleTheme);
+      console.log('Theme toggle attached');
+    } else {
+      console.error('Theme toggle button not found');
+    }
+    
+    if (mobileToggleBtn) {
+      mobileToggleBtn.addEventListener('click', toggleMobileMenu);
+    }
 
     // Element SDK integration
     async function onConfigChange(config) {

@@ -825,10 +825,9 @@
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
-      height: 300px;
+      min-height: 380px;
       display: flex;
       flex-direction: column;
-      aspect-ratio: 1/1;
     }
 
     .light-mode .certification-card {
@@ -860,6 +859,23 @@
       margin-bottom: 1.5rem;
       display: flex;
       justify-content: center;
+      align-items: center;
+      height: 80px;
+    }
+
+    .certification-icon .institute-logo {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      padding: 10px;
+      background: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .certification-card:nth-child(1) .institute-logo {
+      object-fit: cover;
+      padding: 10px;
     }
 
     .certification-title {
@@ -1065,6 +1081,14 @@
       font-size: 1.25rem;
       font-weight: 600;
       flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .reviewer-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
     }
 
     .review-card:nth-child(1) .reviewer-avatar {
