@@ -1942,4 +1942,18 @@ aphic project images to display */
 
 .project-card[data-category="web"] .project-image span {
   display: none;
+}/
+* App project images styling */
+.project-card[data-category="app"] .project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+.project-card[data-category="app"] .project-image span {
+  display: none;
 }
