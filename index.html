@@ -13,24 +13,6 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
  </head>
  <body class="dark-mode">
-  <!-- Beautiful Loader -->
-  <div class="loader-wrapper" id="loader">
-    <div class="loader-container">
-      <div class="loader-logo">
-        <img src="./assets/logo.png" alt="Logo" class="loader-logo-img">
-      </div>
-      <div class="loader-animation">
-        <div class="loader-circle"></div>
-        <div class="loader-circle"></div>
-        <div class="loader-circle"></div>
-      </div>
-      <div class="loader-text">
-        <span class="loader-name">Sahirullah</span>
-        <span class="loader-subtitle">Loading Portfolio...</span>
-      </div>
-    </div>
-  </div>
-  
   <div class="page-wrapper">
    <nav class="navbar"><!-- Logo -->
     <div class="logo-container">
@@ -72,9 +54,9 @@
      </div>
     </div>
    </section><!-- About Section -->
-   <section class="about-section" id="about">
+   <section class="about-section scroll-animate" id="about">
     <div class="about-container"><!-- Left Side - About Content -->
-     <div class="about-content">
+     <div class="about-content fade-in-left">
       <div>
        <h2 class="section-title" id="about-title">About Me</h2>
        <p class="section-subtitle" id="about-subtitle">Passionate creator blending code and design</p>
@@ -105,7 +87,7 @@
        </div>
       </div>
      </div><!-- Right Side - About Image -->
-     <div class="about-image-wrapper">
+     <div class="about-image-wrapper fade-in-right">
       <div class="about-image-container">
        <div class="about-image"><span class="about-emoji">🚀</span>
        </div>
@@ -115,16 +97,16 @@
      </div>
     </div>
    </section><!-- Projects Section -->
-   <section class="projects-section" id="projects">
+   <section class="projects-section scroll-animate" id="projects">
     <div class="projects-container">
-     <div class="section-header">
+     <div class="section-header scale-in">
       <h2 class="section-title">My Projects</h2>
       <p class="section-subtitle">Explore my creative work across different domains</p>
      </div><!-- Filter Buttons -->
-     <div class="filter-buttons"><button class="filter-btn active" data-filter="all">All</button> <button class="filter-btn" data-filter="programming">Programming</button> <button class="filter-btn" data-filter="wordpress">WordPress/Shopify</button> <button class="filter-btn" data-filter="graphic">Graphic</button>
+     <div class="filter-buttons fade-in-left"><button class="filter-btn active" data-filter="all">All</button> <button class="filter-btn" data-filter="programming">Programming</button> <button class="filter-btn" data-filter="wordpress">WordPress/Shopify</button> <button class="filter-btn" data-filter="graphic">Graphic</button>
      </div><!-- Projects Grid -->
      <div class="projects-grid" id="projects-grid"><!-- Programming Project 1 -->
-      <div class="project-card" data-category="programming">
+      <div class="project-card stagger-animate" data-category="programming">
        <div class="project-image">
         <img src="./assets/ecomrace website.png" alt="E-Commerce Platform" class="project-img">
        </div>
@@ -226,14 +208,14 @@
      </div>
     </div>
    </section><!-- Certifications Section -->
-   <section class="certifications-section" id="certifications">""
+   <section class="certifications-section scroll-animate" id="certifications">
     <div class="certifications-container">
-     <div class="section-header">
+     <div class="section-header scale-in">
       <h2 class="section-title">Certifications</h2>
       <p class="section-subtitle">Verified credentials from reputable institutions</p>
      </div>
      <div class="certifications-grid"><!-- Certification 1 -->
-      <div class="certification-card">
+      <div class="certification-card stagger-animate">
        <div class="certification-icon">
         <img src="./assets/Coursera logo -1.webp" alt="Coursera Logo" class="institute-logo">
        </div>
@@ -241,7 +223,7 @@
        <div class="certification-issuer">Coursera</div>
        <p class="certification-details">Comprehensive web development course covering HTML, CSS, JavaScript, responsive design, and modern frameworks.</p><a href="https://www.coursera.org/verify/XXXXXX" target="_blank" class="verify-btn"><span class="verify-btn-icon">🔗</span> Verify Certificate</a>
       </div><!-- Certification 2 -->
-      <div class="certification-card">
+      <div class="certification-card stagger-animate">
        <div class="certification-icon">
         <img src="./assets/Saylani logo2.jpg" alt="Saylani Logo" class="institute-logo">
        </div>
@@ -249,7 +231,7 @@
        <div class="certification-issuer">Saylani Welfare Trust</div>
        <p class="certification-details">Full-stack web application development training with focus on practical implementation and industry best practices.</p><a href="https://saylani.org/verify/XXXXXX" target="_blank" class="verify-btn"><span class="verify-btn-icon">🔗</span> Verify Certificate</a>
       </div><!-- Certification 3 -->
-      <div class="certification-card">
+      <div class="certification-card stagger-animate">
        <div class="certification-icon">
         <img src="./assets/Navttic logo3.jfif" alt="NAVTTC Logo" class="institute-logo">
        </div>
@@ -257,7 +239,7 @@
        <div class="certification-issuer">NAVTTIC</div>
        <p class="certification-details">Advanced training in both MEAN (MongoDB, Express, Angular, Node.js) and MERN (MongoDB, Express, React, Node.js) stacks.</p><a href="https://navttc.gov.pk/verify/XXXXXX" target="_blank" class="verify-btn"><span class="verify-btn-icon">🔗</span> Verify Certificate</a>
       </div><!-- Certification 4 -->
-      <div class="certification-card">
+      <div class="certification-card stagger-animate">
        <div class="certification-icon">
         <img src="./assets/Google logo4.jpg" alt="Google Logo" class="institute-logo">
        </div>
@@ -268,14 +250,14 @@
      </div>
     </div>
    </section><!-- Client Reviews Section -->
-   <section class="reviews-section" id="reviews">
+   <section class="reviews-section scroll-animate" id="reviews">
     <div class="reviews-container">
-     <div class="section-header">
+     <div class="section-header scale-in">
       <h2 class="section-title">Client Reviews</h2>
       <p class="section-subtitle">What my clients say about working with me</p>
      </div>
      <div class="reviews-grid"><!-- Review 1 -->
-      <div class="review-card">
+      <div class="review-card stagger-animate">
        <div class="review-content">
         Working with Sahirullah was an absolute pleasure. They delivered a stunning e-commerce platform that exceeded our expectations. Their attention to detail and problem-solving skills are exceptional.
        </div>
@@ -296,7 +278,7 @@
         </div>
        </div>
       </div><!-- Review 2 -->
-      <div class="review-card">
+      <div class="review-card stagger-animate">
        <div class="review-content">
         The portfolio website they created for our agency is simply breathtaking. Their design sensibilities combined with technical expertise resulted in a perfect digital representation of our brand.
        </div>
@@ -317,7 +299,7 @@
         </div>
        </div>
       </div><!-- Review 3 -->
-      <div class="review-card">
+      <div class="review-card stagger-animate">
        <div class="review-content">
         Professional, timely, and highly skilled. Our fitness app came to life exactly as envisioned. Their ability to understand complex requirements and translate them into functional code is impressive.
        </div>
@@ -338,7 +320,7 @@
         </div>
        </div>
       </div><!-- Review 4 -->
-      <div class="review-card">
+      <div class="review-card stagger-animate">
        <div class="review-content">
         As a startup, we needed someone versatile who could handle both design and development. Sahirullah delivered on both fronts exceptionally well. Our branding and website are now our strongest assets.
        </div>
@@ -362,14 +344,14 @@
      </div>
     </div>
    </section><!-- Contact Section -->
-   <section class="contact-section" id="contact">
+   <section class="contact-section scroll-animate" id="contact">
     <div class="contact-container">
-     <div class="section-header">
+     <div class="section-header scale-in">
       <h2 class="section-title">Get In Touch</h2>
       <p class="section-subtitle">Let's discuss your next project or just say hello</p>
      </div>
      <div class="contact-grid"><!-- Contact Information -->
-      <div class="contact-info">
+      <div class="contact-info fade-in-left">
        <div class="contact-item">
         <div class="contact-icon">
          📧
@@ -411,7 +393,7 @@
         </div>
        </div>
       </div><!-- Contact Form -->
-      <form class="contact-form" id="contact-form">
+      <form class="contact-form fade-in-right" id="contact-form">
        <div class="form-group">
         <label class="form-label">Full Name</label> <input type="text" class="form-input" name="name" id="contact-name" placeholder="Enter your name" required>
        </div>

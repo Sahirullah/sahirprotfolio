@@ -2240,4 +2240,127 @@ l Loader Styles */
   .loader-subtitle {
     font-size: 0.9rem;
   }
+}/*
+ Smooth Scrolling Animations */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll Animation Classes */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-animate.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade in from left */
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade-in-left.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade in from right */
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade-in-right.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scale animation */
+.scale-in {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scale-in.animate-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger animation for cards */
+.stagger-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.stagger-animate.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add delays for staggered animations */
+.stagger-animate:nth-child(1) { transition-delay: 0.1s; }
+.stagger-animate:nth-child(2) { transition-delay: 0.2s; }
+.stagger-animate:nth-child(3) { transition-delay: 0.3s; }
+.stagger-animate:nth-child(4) { transition-delay: 0.4s; }
+.stagger-animate:nth-child(5) { transition-delay: 0.5s; }
+.stagger-animate:nth-child(6) { transition-delay: 0.6s; }
+.stagger-animate:nth-child(7) { transition-delay: 0.7s; }
+.stagger-animate:nth-child(8) { transition-delay: 0.8s; }
+.stagger-animate:nth-child(9) { transition-delay: 0.9s; }
+
+/* Navbar scroll animation */
+.navbar {
+  transform: translateY(-100%);
+  animation: slideDownNavbar 1s ease-out forwards;
+}
+
+@keyframes slideDownNavbar {
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Hero section animations */
+.hero-content {
+  animation: fadeInUp 1.2s ease-out;
+}
+
+.hero-images {
+  animation: fadeInRight 1.2s ease-out 0.3s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Smooth scroll offset for fixed navbar */
+section {
+  scroll-margin-top: 100px;
 }

@@ -1,26 +1,53 @@
-// Beautiful Loader Functionality
-window.addEventListener('load', function() {
-  const loader = document.getElementById('loader');
-  
-  // Hide loader after page loads with a slight delay for smooth effect
-  setTimeout(() => {
-    loader.classList.add('fade-out');
-    
-    // Remove loader from DOM after animation completes
-    setTimeout(() => {
-      loader.style.display = 'none';
-    }, 500);
-  }, 1500); // Show loader for 1.5 seconds minimum
-});
+// Smooth Scroll Animations
+function initScrollAnimations() {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
 
-// Show loader on page refresh/navigation
-window.addEventListener('beforeunload', function() {
-  const loader = document.getElementById('loader');
-  if (loader) {
-    loader.style.display = 'flex';
-    loader.classList.remove('fade-out');
-  }
-});
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+        
+        // Handle stagger animations for different sections
+        if (entry.target.classList.contains('projects-section')) {
+          const projectCards = entry.target.querySelectorAll('.stagger-animate');
+          projectCards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('animate-in');
+            }, index * 100);
+          });
+        }
+        
+        if (entry.target.classList.contains('certifications-section')) {
+          const certCards = entry.target.querySelectorAll('.stagger-animate');
+          certCards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('animate-in');
+            }, index * 150);
+          });
+        }
+        
+        if (entry.target.classList.contains('reviews-section')) {
+          const reviewCards = entry.target.querySelectorAll('.stagger-animate');
+          reviewCards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('animate-in');
+            }, index * 200);
+          });
+        }
+      }
+    });
+  }, observerOptions);
+
+  // Observe all elements with animation classes
+  const animatedElements = document.querySelectorAll('.scroll-animate, .fade-in-left, .fade-in-right, .scale-in');
+  animatedElements.forEach(el => observer.observe(el));
+}
+
+// Initialize scroll animations when DOM is loaded
+document.addEventListener('DOMContentLoaded', initScrollAnimations);
 
 const defaultConfig = {
       background_color_light: "#ffffff",
