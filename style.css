@@ -1956,4 +1956,120 @@ aphic project images to display */
 
 .project-card[data-category="app"] .project-image span {
   display: none;
+}/
+* WordPress/Shopify gradient */
+.wordpress-gradient {
+  background: linear-gradient(135deg, #21759b 0%, #0073aa 100%);
+}
+
+/* WordPress project images styling */
+.project-card[data-category="wordpress"] .project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+.project-card[data-category="wordpress"] .project-image span {
+  display: none;
+}/* 
+Programming project images styling */
+.project-card[data-category="programming"] .project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+.project-card[data-category="programming"] .project-image span {
+  display: none;
+}/
+* Fix project card positioning and layout */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  align-items: start;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 400px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.project-image {
+  width: 100%;
+  height: 200px;
+  flex-shrink: 0;
+}
+
+.project-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.project-btn {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* Ensure proper spacing and alignment */
+.projects-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Fix any overflow issues */
+.projects-section {
+  overflow-x: hidden;
+  width: 100%;
+}/* R
+esponsive fixes for project cards */
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  
+  .project-card {
+    min-height: 350px;
+  }
+  
+  .projects-container {
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .project-card {
+    min-height: 320px;
+  }
 }
