@@ -1,3 +1,27 @@
+// Beautiful Loader Functionality
+window.addEventListener('load', function() {
+  const loader = document.getElementById('loader');
+  
+  // Hide loader after page loads with a slight delay for smooth effect
+  setTimeout(() => {
+    loader.classList.add('fade-out');
+    
+    // Remove loader from DOM after animation completes
+    setTimeout(() => {
+      loader.style.display = 'none';
+    }, 500);
+  }, 1500); // Show loader for 1.5 seconds minimum
+});
+
+// Show loader on page refresh/navigation
+window.addEventListener('beforeunload', function() {
+  const loader = document.getElementById('loader');
+  if (loader) {
+    loader.style.display = 'flex';
+    loader.classList.remove('fade-out');
+  }
+});
+
 const defaultConfig = {
       background_color_light: "#ffffff",
       background_color_dark: "#0f172a",
